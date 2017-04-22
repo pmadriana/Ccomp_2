@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1491914120 source:c:\users\adriana\documents\alg abstracta\afin\main.cpp
+	<iostream>
+	"funcionesMatematicas.h"
+	<fstream>
+	<ctype.h>
+	"Afin.h"
+
+1491801789 c:\users\adriana\documents\alg abstracta\afin\include\funcionesmatematicas.h
+	<vector>
+
+1491802548 source:c:\users\adriana\documents\alg abstracta\afin\src\funcionesmatematicas.cpp
+	"funcionesMatematicas.h"
+
+1491802449 c:\users\adriana\documents\alg abstracta\afin\include\afin.h
+	<string>
+	<vector>
+	"funcionesMatematicas.h"
+	<ctype.h>
+	<iostream>
+
+1491875492 source:c:\users\adriana\documents\alg abstracta\afin\src\afin.cpp
+	"Afin.h"
+
