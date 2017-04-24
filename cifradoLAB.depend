@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1491695280 source:c:\users\adriana\documents\ccomp 2\cifradolab\main.cpp
+	<iostream>
+	<afin.h>
+	<string>
+	<fstream>
+
+1491694307 source:c:\users\adriana\documents\ccomp 2\cifradolab\src\afin.cpp
+	"afin.h"
+	<vector>
+	"FuncionesMatematicas.h"
+	<iostream>
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1491693054 c:\users\adriana\documents\ccomp 2\cifradolab\include\afin.h
+	<string>
+
+1491691808 c:\users\adriana\documents\ccomp 2\cifradolab\include\funcionesmatematicas.h
+	<vector>
+
+1491691888 source:c:\users\adriana\documents\ccomp 2\cifradolab\src\funcionesmatematicas.cpp
+	"FuncionesMatematicas.h"
+
