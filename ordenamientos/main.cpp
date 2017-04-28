@@ -108,4 +108,5 @@ int main()
     insertSort(c, c+tam);
     cout<< "Insercion: ";
     imprimir(c, tam_c);
+    
 }
