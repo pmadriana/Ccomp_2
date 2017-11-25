@@ -1,34 +1,32 @@
 #include <iostream>
-
 using namespace std;
+
 class Nodo
 {
 public:
-	Nodo *next;
 	Nodo *prev;
+	Nodo *next;
 	int val;
 };
 
-class Lista
+class DobleCircular
 {
-	Nodo *inicio;
-	Nodo *fin;
 public:
-	Lista()
+	Nodo *inicio;
+	DobleCircular()
 	{
-		this->inicio = NULL;
-		this->fin = NULL;
+		inicio=NULL;
 	}
-	void o()
+	void ordenarLista()
 	{
 		Nodo *actual , *siguiente;
 		int t;
 		actual = inicio;
-		while(actual->next != NULL)
+		while(actual->next != inicio)
 		{
 			siguiente = actual->next;
 			
-			while(siguiente!=NULL)
+			while(siguiente!=inicio)
 			{
 				if(actual->val > siguiente->val) //cambio
 				{
@@ -43,75 +41,77 @@ public:
 		}
 		
 	}
-	
-	void print(){
-		Nodo *temp;
-		temp = this->inicio;
-		while (temp != NULL){
-			cout << temp->val << " ";
-			temp = temp->next;
-		}
-		cout << endl;
-	}
-	Add(int n)
+	void add(int n)
 	{
 		Nodo *nuevo = new Nodo;
-		nuevo->val = n;
-		if(inicio == NULL)
-		{
-			nuevo->next = this->fin;
-			nuevo->prev = this->inicio;
-			inicio = nuevo;
-			fin = nuevo;
+		nuevo->val=n;
+		if(inicio==NULL){
+			inicio=nuevo;
+			nuevo->next=nuevo;
+			nuevo->prev=nuevo;
+			
 		}
 		else
 		{
-			nuevo->next = NULL;
-			nuevo->prev = fin;
-			fin->next = nuevo;
-			fin = nuevo;
-			o();
-		}
-		o();
-	}
-	void delet(int n){
-		Nodo * nuevo = inicio;
-		if(inicio->val==n)
-			inicio=inicio->next;
-		else{
-			while(nuevo != NULL && nuevo->val!= n){
-				nuevo = nuevo->next;
+			Nodo *temp;
+			temp=inicio;
+			while(temp->next !=  inicio ){//&& temp->val < n){
+				temp = temp->next;
 			}
-			if(nuevo != NULL){
-				Nodo * pre_aux = nuevo->prev;
-				Nodo * next_aux = nuevo->next;
-				if(pre_aux == NULL){
-					next_aux->next= pre_aux;
-					inicio = next_aux;
-				}
-				if(next_aux == NULL){
-					pre_aux->next= next_aux;
-				}
-				if(pre_aux != NULL && next_aux != NULL){
-					pre_aux->next= next_aux;
-					next_aux->prev=pre_aux;
-				}
+			temp->next=nuevo;
+			nuevo->next=inicio;
+			inicio->prev=nuevo;
+			ordenarLista();
+		}
+		ordenarLista();
+	}
+	void print(){
+		Nodo *temp;
+		temp = this->inicio;
+		cout<<inicio->val<<" ";
+		temp=temp->next;
+		while (temp != inicio){
+			cout<< temp->val << " ";
+			temp = temp->next;
+		}
+		cout << endl;
+		
+	}
+	void delet(int n)
+	{
+		Nodo *temp;
+		temp=inicio;
+		
+		while(temp->next->val != n)
+		{
+			temp = temp->next;
+		}
+		if(inicio->val==n)
+		{
+			inicio=inicio->next;
+			temp->next=inicio;
+		}
+		else{
+			if(temp->next->next == inicio)
+				temp->next = inicio;
+			else
+			{
+				temp->next = temp->next->next;
 				
 			}
 		}
+		
 	}
-	
 };
-
-
 
 int main()
 {
-	Lista *A = new Lista;
-	A->Add(5);
-	A->Add(7);
-	A->Add(4);
-	A->Add(1);
-	A->delet(5);
+	DobleCircular *A = new DobleCircular();
+	A->add(4);
+	A->add(8);
+	A->add(3);
+	A->add(5);
+	A->print();
+	A->delet(4);
 	A->print();
 }
