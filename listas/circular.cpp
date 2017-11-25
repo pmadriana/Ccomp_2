@@ -11,63 +11,11 @@ public:
 class Circular{
 private:
 	Nodo *inicio;
+	Nodo *fin;
 public:
 	Circular(){
 		this->inicio = NULL;
-	}
-	void add(int n)
-	{
-		Nodo *nuevo = new Nodo;
-		nuevo->val=n;
-		if(inicio==NULL){
-			inicio=nuevo;
-			nuevo->next=nuevo;
-		}
-		else
-		{
-			Nodo *temp;
-			temp=inicio;
-			while(temp->next !=  inicio ){//&& temp->val < n){
-				temp = temp->next;
-			}
-			temp->next=nuevo;
-			nuevo->next=inicio;	
-		}
-	}
-	void delet(int n)
-	{
-		Nodo *temp;
-		temp=inicio;
-		if(temp->val==n)
-		{
-			inicio = inicio->next;
-		}
-		else {
-			while(temp->next->val != n)
-			{
-				temp = temp->next;
-			}
-			if(temp->next->next == inicio)
-				  temp->next = inicio;
-			else
-			{
-				temp->next = temp->next->next;
-				//delete temp->next->next;
-				
-			}
-		}
-	}
-	void print(){
-		Nodo *temp;
-		temp = this->inicio;
-		cout<<inicio->val<<" ";
-		temp=temp->next;
-		while (temp != inicio){
-			cout<< temp->val << " ";
-			temp = temp->next;
-		}
-		cout << endl;
-		
+		fin=NULL;
 	}
 	void ordenarLista()
 	{
@@ -93,19 +41,75 @@ public:
 		}
 		
 	}
+	void add(int n)
+	{
+		Nodo *nuevo = new Nodo;
+		nuevo->val=n;
+		if(inicio==NULL){
+			inicio=nuevo;
+			nuevo->next=nuevo;
+		}
+		else
+		{
+			Nodo *temp;
+			temp=inicio;
+			while(temp->next !=  inicio ){//&& temp->val < n){
+				temp = temp->next;
+			}
+			temp->next=nuevo;
+			nuevo->next=inicio;
+			ordenarLista();
+		}
+		ordenarLista();
+	}
+	void delet(int n)
+	{
+		Nodo *temp;
+		temp=inicio;
+		
+			while(temp->next->val != n)
+			{
+				temp = temp->next;
+			}
+			if(inicio->val==n)
+			{
+				inicio=inicio->next;
+				temp->next=inicio;
+			}
+			else{
+			if(temp->next->next == inicio)
+				  temp->next = inicio;
+			else
+			{
+				temp->next = temp->next->next;
+				//delete temp->next->next;
+				
+			}}
+		
+	}
+	void print(){
+		if(inicio==NULL)
+			cout<<"vacio"<<endl;
+		else{
+		Nodo *temp;
+		temp = this->inicio;
+		cout<<inicio->val<<" ";
+		temp=temp->next;
+		while (temp != inicio){
+			cout<< temp->val << " ";
+			temp = temp->next;
+		}
+		cout << endl;}
+		
+	}
 };
 
 
 int main(int argc, char *argv[]) {
 	Circular A, B;
+	A.add(4);
 	A.add(5);
 	A.add(6);
-	A.add(4);
-	A.add(7);
-	A.print();
-	A.add(3);
-	A.print();
-	A.add(8);
-	A.ordenarLista();
+	A.delet(4);
 	A.print();
 }
