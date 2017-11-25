@@ -67,18 +67,18 @@ public:
 		Nodo *temp;
 		temp=inicio;
 		
-			while(temp->next->val != n)
-			{
-				temp = temp->next;
-			}
-			if(inicio->val==n)
-			{
-				inicio=inicio->next;
-				temp->next=inicio;
-			}
-			else{
+		while(temp->next->val != n)
+		{
+			temp = temp->next;
+		}
+		if(inicio->val==n)
+		{
+			inicio=inicio->next;
+			temp->next=inicio;
+		}
+		else{
 			if(temp->next->next == inicio)
-				  temp->next = inicio;
+				temp->next = inicio;
 			else
 			{
 				temp->next = temp->next->next;
@@ -91,15 +91,15 @@ public:
 		if(inicio==NULL)
 			cout<<"vacio"<<endl;
 		else{
-		Nodo *temp;
-		temp = this->inicio;
-		cout<<inicio->val<<" ";
-		temp=temp->next;
-		while (temp != inicio){
-			cout<< temp->val << " ";
-			temp = temp->next;
-		}
-		cout << endl;}
+			Nodo *temp;
+			temp = this->inicio;
+			cout<<inicio->val<<" ";
+			temp=temp->next;
+			while (temp != inicio){
+				cout<< temp->val << " ";
+				temp = temp->next;
+			}
+			cout << endl;}
 		
 	}
 };
